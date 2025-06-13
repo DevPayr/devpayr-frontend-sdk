@@ -11,19 +11,19 @@ You can either include the SDK directly in your HTML, or install it via `npm`/`y
 ### ➤ Browser (via CDN or direct file)
 
 ```html
-<script src="https://cdn.devpayr.com/devpayr-sdk.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/devpayr-frontend-sdk@latest/dist/devpayr-frontend.js"></script>
 ```
 ### ➤ Node.js / Build Tools
 
 ```bash
-npm install devpayr-sdk
+npm install devpayr-frontend-sdk
 ```
 ```js
 // ESM
-import 'devpayr-sdk';
+import 'devpayr-frontend-sdk';
 
 // CommonJS
-require('devpayr-sdk');
+require('devpayr-frontend-sdk');
 ```
 
 ## 🚀 Usage
