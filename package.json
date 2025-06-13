@@ -1,0 +1,42 @@
+{
+  "name": "devpayr-frontend-sdk",
+  "version": "1.0.0",
+  "description": "Frontend SDK for DevPayr license verification, payment enforcement, and injectable delivery.",
+  "main": "dist/devpayr-frontend.cjs.js",
+  "module": "dist/devpayr-frontend.esm.js",
+  "browser": "dist/devpayr-frontend.js",
+  "exports": {
+    "import": "./dist/devpayr-frontend.esm.js",
+    "require": "./dist/devpayr-frontend.cjs.js"
+  },
+  "scripts": {
+    "build:umd": "esbuild src/sdk.js --bundle --minify --format=iife --global-name=DevPayr --outfile=dist/devpayr-frontend.js",
+    "build:esm": "esbuild src/sdk.js --bundle --minify --format=esm --outfile=dist/devpayr-frontend.esm.js",
+    "build:cjs": "esbuild src/sdk.js --bundle --minify --format=cjs --outfile=dist/devpayr-frontend.cjs.js",
+    "build": "npm run build:umd && npm run build:esm && npm run build:cjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "devpayr",
+    "frontend-sdk",
+    "license-verification",
+    "software-protection",
+    "saas-licensing",
+    "injectables",
+    "anti-piracy",
+    "javascript-sdk",
+    "browser-sdk"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Xultech-LTD/devpayr-frontend-sdk"
+  },
+  "type": "module",
+  "author": "XulTech LTD",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.25.5"
+  }
+}

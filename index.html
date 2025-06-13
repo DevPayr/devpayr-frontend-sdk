@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DevPayr SDK Test</title>
+    <script src="./dist/devpayr-frontend.js"></script>
+    <script>
+        window.devPayr = {
+            license: 'abc123',
+            recheck: false,
+            invalidBehavior: 'modal',
+            modalText: 'This site is running stolen software!',
+            modalTheme: {
+                primary: '#facc15',      // golden glow
+                background: '#1f2937',   // slate
+                text: '#ffffff',
+                border: '#facc15',
+                glow: true
+            },
+            injectables: true,
+            injectablesEndpoint: 'https://yourapp.com/sdk/receive',
+
+            // 🔹 Use this for testing locally; remove in production
+            baseUrl: 'http://127.0.0.1:8000/api/v1/',
+
+            debug: true,
+            onReady: function () {
+                console.log('✅ License is valid.');
+            }
+        };
+    </script>
+</head>
+<body>
+<h1>SDK Test</h1>
+</body>
+</html>
