@@ -41,7 +41,7 @@ Before the SDK initializes, you must define a global config object in the browse
         }
     };
 </script>
-<script src="https://cdn.devpayr.com/devpayr-sdk.js"></script>
+<script src="https://cdn.devpayr.dev/devpayr-sdk.js"></script>
 ```
 #### 💻 Minimal Modal with Default Text
 ```html

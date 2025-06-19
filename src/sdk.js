@@ -40,7 +40,7 @@
             }
         }
 
-        const baseURL = config.baseUrl || 'https://api.devpayr.com/api/v1/';
+        const baseURL = config.baseUrl || 'https://api.devpayr.dev/api/v1/';
         const endpoint = new URL('project/has-paid', baseURL);
         endpoint.searchParams.set('license', license);
 

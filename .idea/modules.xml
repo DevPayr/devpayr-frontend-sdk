@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/javascriptSdk.iml" filepath="$PROJECT_DIR$/.idea/javascriptSdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/devpayr-frontend-sdk.iml" filepath="$PROJECT_DIR$/.idea/devpayr-frontend-sdk.iml" />
     </modules>
   </component>
 </project>
