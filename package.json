@@ -1,6 +1,6 @@
 {
   "name": "devpayr-frontend-sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Frontend SDK for DevPayr license verification, payment enforcement, and injectable delivery.",
   "main": "dist/devpayr-frontend.cjs.js",
   "module": "dist/devpayr-frontend.esm.js",
