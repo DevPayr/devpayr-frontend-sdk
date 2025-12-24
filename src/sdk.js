@@ -23,7 +23,7 @@
             return;
         }
 
-        const recheck = config.recheck !== false;
+        const recheck = config.recheck === true;
         const hash = await hashLicense(license);
         const cacheKey = `devpayr:lastSuccess:${hash}`;
         const lastSuccess = localStorage.getItem(cacheKey);
@@ -42,7 +42,8 @@
 
         const baseURL = config.baseUrl || 'https://api.devpayr.dev/api/v1/';
         const endpoint = new URL('project/has-paid', baseURL);
-        endpoint.searchParams.set('license', license);
+
+        const domain = resolveDevPayrDomain(config);
 
         if (config.checkType === 'check_project') {
             endpoint.searchParams.set('action', 'check_project');
@@ -55,10 +56,13 @@
         fetch(endpoint.toString(), {
             method: 'POST',
             headers: {
-                'accept': 'application/json',
+                'X-LICENSE-KEY': license,
+                ...(domain ? { 'X-Devpayr-Domain': domain } : {}),
+                'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'X-Requested-With': 'DevPayr-SDK'
-            }
+            },
+            body: '{}'
         })
             .then(response => {
                 if (!response.ok) throw new Error('Request failed with status ' + response.status);
@@ -125,6 +129,20 @@
         const borderColor = theme.border || primary;
         const glowEnabled = theme.glow !== false;
 
+        const emailHref = buildMailtoHref(config);
+        const contactLabel = (typeof config.contactLabel === 'string' && config.contactLabel.trim())
+            ? config.contactLabel.trim()
+            : 'Contact Developer';
+
+        const contactMode = (typeof config.contactMode === 'string' && config.contactMode.trim())
+            ? config.contactMode.trim().toLowerCase()
+            : 'mailto';
+
+        const contactHref = contactMode === 'redirect'
+            ? (config.contactUrl || config.redirectUrl || 'https://devpayr.com/upgrade')
+            : emailHref;
+
+
         const message = text || 'The project owner did not pay the developer or is using an unsupported license. This software is unlicensed and potentially pirated.';
 
         const modal = document.createElement('div');
@@ -164,7 +182,7 @@
                     ${message}
                 </p>
 
-                <a href="mailto:developer@example.com" style="
+                <a href="${contactHref}" ${contactMode === 'redirect' ? 'target="_blank" rel="noopener noreferrer"' : ''} style="
                     display: inline-block;
                     margin-bottom: 1.5rem;
                     padding: 0.75rem 1.5rem;
@@ -176,7 +194,7 @@
                     text-decoration: none;
                     transition: background 0.3s ease;
                 " onmouseover="this.style.opacity=0.85" onmouseout="this.style.opacity=1">
-                    Contact Developer
+                    ${contactLabel}
                 </a>
 
                 <footer style="font-size: 0.875rem; color: #aaa;">
@@ -207,9 +225,14 @@
             console.log('[DevPayr] Fetching injectables via stream...');
         }
 
+        const domain = resolveDevPayrDomain(config);
+
         fetch(`${baseURL}injectable/stream`, {
             method: 'POST',
             headers: {
+                'X-LICENSE-KEY': license,
+                ...(domain ? { 'X-Devpayr-Domain': domain } : {}),
+                'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'X-Requested-With': 'DevPayr-SDK'
             },
@@ -263,6 +286,61 @@
                 saved.getDate() === now.getDate();
         } catch (e) {
             return false;
+        }
+    }
+
+    function resolveDevPayrDomain(config) {
+        if (config && typeof config.domain === 'string' && config.domain.trim()) {
+            return config.domain.trim();
+        }
+
+        try {
+            const hostname = window.location && window.location.hostname ? String(window.location.hostname).trim() : '';
+            return hostname || null;
+        } catch (_) {
+            return null;
+        }
+    }
+
+    function resolveSupportEmail(config) {
+        const candidates = [
+            config?.developerEmail,
+            config?.email,
+            config?.supportEmail
+        ];
+
+        for (const v of candidates) {
+            if (typeof v === 'string' && v.trim()) return v.trim();
+        }
+
+        return 'support@devpayr.com';
+    }
+
+    function buildMailtoHref(config) {
+        const email = resolveSupportEmail(config);
+
+        const subject =
+            typeof config?.contactSubject === 'string' && config.contactSubject.trim()
+                ? config.contactSubject.trim()
+                : 'DevPayr License Issue';
+
+        const body =
+            typeof config?.contactBody === 'string' && config.contactBody.trim()
+                ? config.contactBody.trim()
+                : `Hi,\n\nI’m seeing an "Unlicensed Software" message in the app.\n\nDomain: ${safeLocationHost()}\n\nPlease assist.\n`;
+
+        const params = new URLSearchParams();
+        if (subject) params.set('subject', subject);
+        if (body) params.set('body', body);
+
+        return `mailto:${email}?${params.toString()}`;
+    }
+
+    function safeLocationHost() {
+        try {
+            return window.location?.host ? String(window.location.host) : '';
+        } catch (_) {
+            return '';
         }
     }
 

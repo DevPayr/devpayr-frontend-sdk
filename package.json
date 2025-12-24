@@ -13,7 +13,10 @@
     "build:umd": "esbuild src/sdk.js --bundle --minify --format=iife --global-name=DevPayr --outfile=dist/devpayr-frontend.js",
     "build:esm": "esbuild src/sdk.js --bundle --minify --format=esm --outfile=dist/devpayr-frontend.esm.js",
     "build:cjs": "esbuild src/sdk.js --bundle --minify --format=cjs --outfile=dist/devpayr-frontend.cjs.js",
-    "build": "npm run build:umd && npm run build:esm && npm run build:cjs"
+    "build": "npm run build:umd && npm run build:esm && npm run build:cjs",
+    "build:dev": "esbuild src/sdk.js --bundle --format=iife --sourcemap --outfile=dist/devpayr-frontend.js",
+    "watch": "esbuild src/sdk.js --bundle --format=iife --sourcemap --outfile=dist/devpayr-frontend.js --watch",
+    "serve": "npx serve . -l 5173"
   },
   "files": [
     "dist"
@@ -31,12 +34,19 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Xultech-LTD/devpayr-frontend-sdk"
+    "url": "git+https://github.com/Xultech-LTD/devpayr-frontend-sdk.git"
   },
   "type": "module",
   "author": "XulTech LTD",
   "license": "MIT",
   "devDependencies": {
-    "esbuild": "^0.25.5"
-  }
+    "esbuild": "^0.25.12"
+  },
+  "directories": {
+    "example": "examples"
+  },
+  "bugs": {
+    "url": "https://github.com/Xultech-LTD/devpayr-frontend-sdk/issues"
+  },
+  "homepage": "https://github.com/Xultech-LTD/devpayr-frontend-sdk#readme"
 }
