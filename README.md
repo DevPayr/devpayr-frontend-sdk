@@ -11,19 +11,19 @@ You can either include the SDK directly in your HTML, or install it via `npm`/`y
 ### ➤ Browser (via CDN or direct file)
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/devpayr-frontend-sdk@latest/dist/devpayr-frontend.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@devpayr/frontend-sdk@latest/dist/devpayr-frontend.js"></script>
 ```
 ### ➤ Node.js / Build Tools
 
 ```bash
-npm install devpayr-frontend-sdk
+npm install @devpayr/frontend-sdk
 ```
 ```js
 // ESM
-import 'devpayr-frontend-sdk';
+import '@devpayr/frontend-sdk';
 
 // CommonJS
-require('devpayr-frontend-sdk');
+require('@devpayr/frontend-sdk');
 ```
 
 ## 🚀 Usage
@@ -158,7 +158,7 @@ Before the SDK initializes, you must define a global config object in the browse
 #### ➤ ESM (e.g. Vite, Nuxt, React, etc.)
 
 ```js
-import 'devpayr-frontend-sdk';
+import '@devpayr/frontend-sdk';
 
 // Optionally inject config into window (for client detection)
 window.devpayr = {
@@ -169,7 +169,7 @@ window.devpayr = {
 #### ➤ CommonJS (e.g. Webpack, Next.js)
 
 ```js
-require('devpayr-frontend-sdk');
+require('@devpayr/frontend-sdk');
 
 global.devpayr = {
     license: 'YOUR_LICENSE_KEY',

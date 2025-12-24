@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a5adf82-30f1-4207-9d57-7ec6e7b84d6f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/examples/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/mock/receive-injectables.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/mock/receiver.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/devpayr-frontend.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/devpayr-frontend.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdk.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdk.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +71,7 @@
       <updated>1750322862970</updated>
       <workItem from="1750322866068" duration="777000" />
       <workItem from="1766572718928" duration="1233000" />
-      <workItem from="1766576131972" duration="3277000" />
+      <workItem from="1766576131972" duration="5807000" />
     </task>
     <servers />
   </component>
